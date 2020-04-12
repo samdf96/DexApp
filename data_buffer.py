@@ -68,14 +68,14 @@ def entry_maker(name, toggle, import_data, data_buffer,
 
 class Row:
     def __init__(self, data_row, data_buffer, import_data):
-        print('Being Created.')
-        print('Lucky data', data_row['Lucky'])
         self.name = data_row['Name']
         self.dex_number = str(data_row['Pokedex Number'])
         self.type1 = str(data_row['Type 1']).lower()
-        self._entry = data_row['Entry']
-        self._lucky = data_row['Lucky']
-        self._fc = data_row['FC']
+        self.entry = data_row['Entry']
+        print('Lucky data from file: ', data_row['Lucky'])
+        # The following line does not use the setter function below
+        self.lucky = data_row['Lucky']
+        self.fc = data_row['FC']
         self.data_buffer = data_buffer
         self.import_data = import_data
 
@@ -113,6 +113,7 @@ class Row:
 
     @lucky.setter
     def lucky(self, value):
+        print('Setter Accessed.')
         self._lucky = value
         self.data_logger('Lucky', value)
 

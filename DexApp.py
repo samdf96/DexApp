@@ -72,8 +72,8 @@ class DexWindow(GridLayout):
         self.size_hint_y = None
         for index, row in DATA.iterrows():
             dex_entry = DexEntry(row, db, DATA)
-            print(dex_entry.lucky)
-            print(dex_entry._lucky)
+            print(dex_entry.lucky)  # -> This works but does not use the getter in class Row
+            #print(dex_entry._lucky)  # -> This does not work whatsoever because setter was never used
             self.add_widget(dex_entry)
             if index == 0:
                 break
