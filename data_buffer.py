@@ -68,6 +68,8 @@ def entry_maker(name, toggle, import_data, data_buffer,
 
 class Row:
     def __init__(self, data_row, data_buffer, import_data):
+        print('Being Created.')
+        print('Lucky data', data_row['Lucky'])
         self.name = data_row['Name']
         self.dex_number = str(data_row['Pokedex Number'])
         self.type1 = str(data_row['Type 1']).lower()
@@ -97,12 +99,10 @@ class Row:
 
     @property
     def entry(self):
-        print('Getter Accessed.')
         return self._entry
 
     @entry.setter
     def entry(self, value):
-        print('Setter Accessed.')
         self._entry = value
         self.data_logger('Entry', value)
 

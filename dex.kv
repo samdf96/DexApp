@@ -16,7 +16,7 @@
     on_release:
         root.toggle = not root.toggle
 
-<DexEntryTest>:
+<DexEntry>:
     size_hint_y: None
     size_hint_x: 1
     height: 250
@@ -26,6 +26,11 @@
         Rectangle:
             pos: self.pos
             size: self.size
+        Color:
+            rgba: (0, 0, 0, 1)
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
     Image:
         source: root.pic_source
         size_hint: 0.75, 0.75

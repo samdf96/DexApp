@@ -42,7 +42,7 @@ class ButtonBase(BorderBase, ToggleButton):
     pass
 
 
-class DexEntryTest(FloatLayout, Row):
+class DexEntry(FloatLayout, Row):
     name = StringProperty('')
     name_lookup = StringProperty('')
     dex_number = StringProperty('')
@@ -56,8 +56,8 @@ class DexEntryTest(FloatLayout, Row):
     color_dark = VariableListProperty(1)
 
     def __init__(self, data_row, data_buffer, import_data, **kwargs):
-        super(DexEntryTest, self).__init__(data_row=data_row, data_buffer=data_buffer,
-                                           import_data=import_data, **kwargs)
+        super(DexEntry, self).__init__(data_row=data_row, data_buffer=data_buffer,
+                                       import_data=import_data, **kwargs)
         self.data_row = data_row
         self.name_lookup = str(data_row['Name'].lower())
         self.pic_source = PIC_DIR + str(self.dex_number).zfill(3) + '.png'
@@ -65,13 +65,15 @@ class DexEntryTest(FloatLayout, Row):
         self.color_light = ColorPicker(self.type1, 'light')
         self.color_dark = ColorPicker(self.type1, 'dark')
 
-
 class DexWindow(GridLayout):
     def __init__(self, **kwargs):
         super(DexWindow, self).__init__(**kwargs)
         self.cols = 3
+        self.size_hint_y = None
         for index, row in DATA.iterrows():
-            dex_entry = DexEntryTest(row, db, DATA)
+            dex_entry = DexEntry(row, db, DATA)
+            print(dex_entry.lucky)
+            print(dex_entry._lucky)
             self.add_widget(dex_entry)
             if index == 0:
                 break
